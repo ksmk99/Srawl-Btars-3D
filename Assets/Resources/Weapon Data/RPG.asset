@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0f89832a8d5f948881fb44e8a9c8c4, type: 3}
+  m_Name: RPG
+  m_EditorClassIdentifier: 
+  weaponName: RPG
+  description: 
+  icon: {fileID: 0}
+  bullet: {fileID: 6808099510543832547, guid: 7fd40b3cb4dee274282f9667546ad378, type: 3}
+  weaponModel: {fileID: 4466197679962963556, guid: bcd1f44176ef00149aaf11ba79beb179, type: 3}
+  fireRate: 2
+  minFireRate: 0
