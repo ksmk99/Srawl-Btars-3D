@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class TommyGun : Weapon
 {
-    public override void Shoot(int layer)
+    public override void Shoot()
     {
-        if (Time.time > nextFire)
+        if (Time.time > nextFire && weaponReload.Shoot())
         {
-            nextFire = Time.time + 0.3f;
+            nextFire = Time.time + fireRate * Random.Range(0.65f, 1f);
+            if (weaponReload.CanShoot())
+            {
+                nextFire = Time.time + minFireRate;
+            }
             StartCoroutine(ShootPattern());
         }
     }

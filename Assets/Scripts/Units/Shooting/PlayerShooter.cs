@@ -5,8 +5,30 @@ using UnityEngine.AI;
 
 public class PlayerShooter : UnitShooter
 {
-	protected override void Start()
+	[SerializeField] private VariableJoystick shooterJoystick;
+
+	private Animator animator;
+
+    public override bool IsShooting => false;
+
+    protected void Start()
     {
-		base.Start();
+		animator = GetComponent<Animator>();
+
+		shooterJoystick.OnTouchEnd += Shoot; 
 	}
+
+	private void Shoot(Vector3 direction)
+    {
+		if (!weaponReload.Shoot()) return;
+		if(direction == new Vector3(0,0,0))
+        {
+			GetEnemy();
+			if(HaveEnemy)
+            {
+				transform.LookAt(target.position);
+            }
+        }
+		weaponChanger.Weapon.Shoot();
+    }
 }

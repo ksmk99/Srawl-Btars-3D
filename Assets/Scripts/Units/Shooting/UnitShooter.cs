@@ -1,81 +1,72 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class UnitShooter : MonoBehaviour
 {
-	public bool IsShooting { get;set; }
+	public abstract bool IsShooting { get; }
+	public bool HaveEnemy => target != null;
+
+	public Weapon Weapon => weaponChanger.Weapon;
+	public Transform Target => target;
 
 	[Header("Settings")]
 	[SerializeField] protected float turnSmoothTime = 0.2f;
-	[SerializeField] protected LayerMask enemyLayer;
-	[SerializeField] protected LayerMask bulletLayer;
 	[SerializeField] protected float visibleRange = 20f;
 
-	protected Weapon weapon;
+	[SerializeField] protected LayerMask enemyLayer;
+	[SerializeField] protected LayerMask bulletLayer;
+
+	protected WeaponChanger weaponChanger;
 	protected Transform target;
 	protected Health health;
+	protected WeaponReloadGUI weaponReload;
 
 	protected float turnSmoothVelocity;
-	protected bool haveEnemy;
+	protected bool canShoot = true;
 
-	public void UpdateWeapon(Weapon data)
+	protected virtual void Awake()
 	{
-		weapon = data;
-	}
-
-	protected virtual void Start()
-    {
-		weapon = GetComponentInChildren<WeaponChanger>().Weapon;
+		weaponReload = GetComponentInChildren<WeaponReloadGUI>();
+		weaponChanger = GetComponentInChildren<WeaponChanger>();
 		health = GetComponent<Health>();
-    }
 
-    protected virtual void Update()
-	{
-		if (IsShooting && !health.IsDead)
-		{
-			if (!haveEnemy || target == null)
-				haveEnemy = GetEnemy();
-			else
-				LookAtTarget();
-		}
+		GetComponent<Health>().OnDeath += () => canShoot = false;
 	}
 
-	protected virtual void LateUpdate()
+	protected void GetEnemy()
 	{
-		if (haveEnemy && IsShooting && !health.IsDead)
-		{
-			weapon.Shoot((int)Mathf.Log(bulletLayer.value, 2));
-		}
-	}
+		var targets = Physics.OverlapSphere(transform.position, visibleRange, enemyLayer.value)
+			.Where(x => x.transform != transform)
+			.Select(x => x.transform)
+			.ToArray();
 
-	protected void LookAtTarget()
-	{
-		var direction = target.transform.position - transform.position;
-		var targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-		var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle,
-			ref turnSmoothVelocity, turnSmoothTime);
-		transform.rotation = Quaternion.Euler(0f, angle, 0f);
-	}
-
-	private bool GetEnemy()
-	{
-		var targets = Physics.OverlapSphere(transform.position, visibleRange, enemyLayer);
 		if (targets.Length == 0)
-			return false;
-		target = targets[Random.Range(0, targets.Length)].transform;
-		return target != null;
+		{
+			target = null;
+			return;
+		}
+
+		target = CalculateNearestTarget(targets);
 	}
 
-	//protected bool CanSeeEnemy(Vector3 position)
-	//{
-	//	RaycastHit hit;
-	//	if (Physics.Linecast(transform.position, position, out hit, 1 << 6))
-	//	{
-	//		Debug.DrawLine(transform.position, position, Color.yellow);
-	//		var sas = hit.collider.gameObject.layer != 6;
-	//		return hit.collider.gameObject.layer != 6;
-	//	}
-	//	return true;
-	//}
+	private Transform CalculateNearestTarget(Transform[] targets)
+    {
+		Transform result = null;
+		var minDistance = float.MaxValue;
+
+		for (int i = 0; i < targets.Length; i++)
+		{
+			
+			var distance = Vector3.Distance(transform.position, targets[i].position);
+			if (distance < minDistance)
+			{
+				result = targets[i];
+				minDistance = distance;
+			}
+		}
+
+		return result;
+	}
 }

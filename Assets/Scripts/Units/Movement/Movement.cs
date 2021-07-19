@@ -11,15 +11,20 @@ public abstract class Movement : MonoBehaviour
 	[SerializeField] protected float speed = 5f;
 
 	protected NavMeshAgent agent;
+	protected bool canMove = true;
 
 	protected virtual void Awake()
     {
 		SetComponents();
+		GetComponent<Health>().OnDeath += () => canMove = false;
 	}
 
 	protected virtual void Update()
     {
-        Move();
+		if (canMove)
+		{
+			Move();
+		}
     }
 
 	protected abstract void Move();

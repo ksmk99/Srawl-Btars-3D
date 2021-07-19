@@ -11,22 +11,22 @@ public class ShotGun : Weapon
         new Vector3(0, 10f, 0)
     };
 
-    public override void Shoot(int layer)
+    public override void Shoot()
     {
         if (Time.time > nextFire)
         {
+            animator.SetTrigger("Attack");
             nextFire = Time.time + fireRate;
             foreach (var vector in vectors)
             {
-                BulletInstantiate(vector, layer);
+                BulletInstantiate(vector);
             }
         }
     }
 
-    private void BulletInstantiate(Vector3 pointMove, int layer)
+    private void BulletInstantiate(Vector3 pointMove)
     {
         var shoot = Instantiate(weaponData.Bullet, shootPoint.position, shootPoint.rotation);
-        shoot.layer = layer;
         shootPoint.Rotate(pointMove);
     }
 }

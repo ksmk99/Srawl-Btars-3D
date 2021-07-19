@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class ColorChanger : MonoBehaviour
 {
-    [SerializeField] private Material main;
-    [SerializeField] private Material dead;
+    [SerializeField] private Material DeathMaterial;
 
     private SkinnedMeshRenderer meshRenderer;
+    private Material[] deathMats;
 
     public void Start()
     {
         meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
-    }
+        deathMats = new Material[1] { DeathMaterial };
 
-    private void Death()
-    {
-        meshRenderer.materials = new Material[1] { dead };
+        GetComponent<Health>().OnDeath += () => meshRenderer.materials = deathMats;
     }
 }

@@ -8,25 +8,33 @@ public class Weapon : MonoBehaviour
 {
     public WeaponData WeaponData => weaponData;
 
-    [SerializeField]
-    protected WeaponData weaponData;
-    [SerializeField]
-    protected Transform shootPoint;
+    [SerializeField] protected WeaponData weaponData;
+    [SerializeField] protected Transform shootPoint;
+    [SerializeField] protected WeaponReloadGUI weaponReload;
+
+    protected float minFireRate = 0.2f;
     protected float nextFire = 0;
     protected float fireRate;
 
+    protected Animator animator;
+
     private void Awake()
     {
+        animator = GetComponentInParent<Animator>();
         fireRate = weaponData.FireRate;
     }
 
-    public virtual void Shoot(int layer)
+    public virtual void Shoot()
     {
-        if (Time.time > nextFire)
+        if (Time.time > nextFire && weaponReload.Shoot())
         {
             nextFire = Time.time + fireRate * Random.Range(0.65f, 1f);
-            var bullet = Instantiate(weaponData.Bullet, shootPoint.position, shootPoint.rotation);
-            bullet.layer = layer;
+            if(weaponReload.CanShoot())
+            {
+                nextFire = Time.time + minFireRate;
+            }
+            Instantiate(weaponData.Bullet, shootPoint.position, shootPoint.rotation);
+            animator.SetTrigger("Attack");
         }
     }
 }

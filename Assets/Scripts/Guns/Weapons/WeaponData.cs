@@ -6,31 +6,25 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New WeaponData", menuName = "Weapon Data")]
 public class WeaponData : ScriptableObject
 {
-    [SerializeField]
-    private string weaponName;
-    [SerializeField]
-    private string description;
-    [SerializeField]
-    private Sprite icon;
-    [SerializeField]
-    private GameObject bullet;
-    [SerializeField]
-    private GameObject weaponModel;
-    [SerializeField]
+    [SerializeField] private string weaponName;
+    [SerializeField] private Sprite icon;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject weaponModel;
+
     [Range(0.01f, 5f)]
-    private float fireRate;
-    [SerializeField]
-    [Range(0.01f, 5f)]
-    private float minFireRate;
+    [SerializeField]private float fireRate;
+    [Range(1, 5)]
+    [SerializeField] private int cellCount;
 
-    public float FireRate { get => fireRate; }
-    public float MinFireRate { get => minFireRate; }
 
-    public string WeaponName { get => weaponName; }
+    public int CellCount => cellCount;
+    public float FireRate => fireRate;
 
-    public string Description { get => description; }
+    public string WeaponName => weaponName;
 
-    public Sprite Icon { get => icon; }
+    public Sprite Icon => icon;
+
+    public GameObject WeaponModel => weaponModel;
 
     public GameObject Bullet
     {
@@ -41,6 +35,4 @@ public class WeaponData : ScriptableObject
             throw new ArgumentException();
         }
     }
-
-    public GameObject WeaponModel { get => weaponModel; }
 }

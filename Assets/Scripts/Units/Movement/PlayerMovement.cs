@@ -15,8 +15,6 @@ public class PlayerMovement : Movement
 	[SerializeField] private VariableJoystick movementJoystick;
 	[SerializeField] private VariableJoystick shooterJoystick;
 
-	private bool canMove = true;
-
 	private void Start()
 	{
 		Instance = this;
@@ -25,12 +23,9 @@ public class PlayerMovement : Movement
 
 	protected override void Move()
 	{
-		if (canMove)
-		{
-			MoveDirection = new Vector3(movementJoystick.Horizontal, 0, movementJoystick.Vertical);
-			agent.Move(MoveDirection * speed * Time.deltaTime);
-			UpdateRotation();
-		}
+		MoveDirection = new Vector3(movementJoystick.Horizontal, 0, movementJoystick.Vertical);
+		agent.Move(MoveDirection * speed * Time.deltaTime);
+		UpdateRotation();
 	}
 
 	private void UpdateRotation()
