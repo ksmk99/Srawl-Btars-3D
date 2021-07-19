@@ -44,7 +44,7 @@ public class Diamond : MonoBehaviour
         yield return new WaitForSeconds(delay);
         Money.Instance.AddMoney(1);
         Instantiate(collectParticle, transform.position, Quaternion.identity).transform.parent = 
-            BrainMovement.Instance.transform;
+            PlayerMovement.Instance.transform;
         Destroy(gameObject);
     }
 }

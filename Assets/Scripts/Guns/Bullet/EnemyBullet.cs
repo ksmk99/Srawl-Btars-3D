@@ -6,11 +6,11 @@ public class EnemyBullet : Bullet
 {
     protected override void OnTriggerEnter(Collider other)
     {
-        var player = other.GetComponent<Unit>();
-        if (player != null)
-        {
+        //var player = other.GetComponent<Unit>();
+        // (player != null)
+        //{
             //player.Death();
-        }
+        //}
         Destroy(gameObject);
     }
 }

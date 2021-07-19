@@ -14,10 +14,10 @@ public class Health : MonoBehaviour
 
     public void Damage()
     {
-        if (!IsDead && !GameManager.Instance.IsGameEnd && CanDie)
-        {
-            IsDead = true;
-            GetComponent<Unit>().Death();
-        }
+        //if (!IsDead && !GameManager.Instance.IsGameEnd && CanDie)
+        //{
+        //    IsDead = true;
+        //    GetComponent<Unit>().Death();
+        //}
     }
 }

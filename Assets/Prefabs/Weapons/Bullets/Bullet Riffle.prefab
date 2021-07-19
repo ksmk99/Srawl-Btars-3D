@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -1783009885876984640}
   - component: {fileID: 2988288560518774887}
   - component: {fileID: 4468042531523631792}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Bullet Riffle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

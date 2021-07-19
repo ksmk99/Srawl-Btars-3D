@@ -12,7 +12,6 @@ public class ColorChanger : MonoBehaviour
     public void Start()
     {
         meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
-        GetComponent<Unit>().OnDeath += Death;
     }
 
     private void Death()
