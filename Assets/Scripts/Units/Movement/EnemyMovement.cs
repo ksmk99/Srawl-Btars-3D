@@ -13,17 +13,30 @@ public class EnemyMovement : Movement
 
     private float maxWalkDistance = 50f;
     private float distanceToTarget;
+    private float stoppingDistance;
+    private bool needPowerup;
 
     private void Start()
     {
+        stoppingDistance = agent.stoppingDistance;
         target = transform;
         shooter = GetComponent<EnemyShooter>();
         GetTarget();
+
+        GetComponent<Health>().OnDamage += () =>
+        {
+            if (Random.Range(0, 4) == 0)
+            {
+                needPowerup = true;
+                agent.stoppingDistance = 0.1f;
+                GetTarget(true);
+            }
+        };
     }
 
     protected override void Move()
     {
-        if (shooter.HaveEnemy)
+        if (shooter.HaveEnemy && !needPowerup)
         {
             distanceToTarget = Vector3.Distance(transform.position, shooter.Target.position);
             if (agent.stoppingDistance * 1.2f < distanceToTarget)
@@ -36,21 +49,17 @@ public class EnemyMovement : Movement
             distanceToTarget = Vector3.Distance(transform.position, agent.destination);
             if (agent.stoppingDistance > distanceToTarget)
             {
+                needPowerup = false;
+                agent.stoppingDistance = stoppingDistance;
                 GetTarget();
             }
         }
     }
 
 
-    private void GetTarget()
+    private void GetTarget(bool needPowerup = false)
     {
-        var direction = Random.insideUnitSphere * maxWalkDistance;
-        direction += transform.position;
-
-        NavMeshHit hit;
-        NavMesh.SamplePosition(direction, out hit, Random.Range(20f, float.MaxValue), 1);
-
-        var position = PointsOfInterest.Instance.GetPoint(target.position);
+        var position = PointsOfInterest.Instance.GetPoint(target.position, needPowerup);
         agent.SetDestination(position);
     }
 }

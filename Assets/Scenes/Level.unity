@@ -200,9 +200,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerups:
-  - {fileID: 401759450283895051, guid: 99669bc16ccd8654cacd2ef78828a07f, type: 3}
-  - {fileID: 7635002919565580025, guid: cf36d8edd69ea7a4f874151f1d81c3f0, type: 3}
-  - {fileID: 5482643196125654769, guid: affdc79382041cf45bdc2e1c21951f8e, type: 3}
+  - {fileID: 9086793682766768971, guid: 99669bc16ccd8654cacd2ef78828a07f, type: 3}
+  - {fileID: 7505583361244921652, guid: cf36d8edd69ea7a4f874151f1d81c3f0, type: 3}
+  - {fileID: 1271588070108533361, guid: affdc79382041cf45bdc2e1c21951f8e, type: 3}
   minTime: 2
   maxTime: 4
 --- !u!1001 &8308734
@@ -269,6 +269,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7079398693567669771, guid: 0e5ee4fc418c25c488336be425a845d1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8023156248674500989, guid: 0e5ee4fc418c25c488336be425a845d1, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
