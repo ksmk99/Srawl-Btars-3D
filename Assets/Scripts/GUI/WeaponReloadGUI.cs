@@ -74,7 +74,7 @@ public class WeaponReloadGUI : MonoBehaviour
         var startTime = Time.time;
         while (reloadValue < 1)
         {
-            reloadValue = (Time.time - startTime) / weaponChanger.Weapon.WeaponData.FireRate;
+            reloadValue = (Time.time - startTime) / weaponChanger.Weapon.WeaponData.ReloadTime;
             reloadingCell.SetReloadValue(reloadValue);
             yield return new WaitForEndOfFrame();
         }

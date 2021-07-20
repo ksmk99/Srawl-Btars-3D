@@ -9,9 +9,13 @@ public class WeaponChanger : MonoBehaviour
 
     [SerializeField] private Weapon[] weapons;
 
+    [SerializeField] private Transform shootPoint;
+    [SerializeField] private WeaponReloadGUI weaponReload;
+
     private void Awake()
     {
         Weapon = weapons.Where(x => x.gameObject.activeSelf).FirstOrDefault();
+        Weapon.SetComponents(shootPoint, weaponReload);
     }
 
     public void ChangeWeapon(WeaponData data)
@@ -23,6 +27,7 @@ public class WeaponChanger : MonoBehaviour
                 Weapon.gameObject.SetActive(false);
                 weapon.gameObject.SetActive(true);
                 Weapon = weapon;
+                Weapon.SetComponents(shootPoint, weaponReload);
                 break;
             }
         }

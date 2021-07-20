@@ -15,6 +15,7 @@ public class HealthGUI : MonoBehaviour
     {
         health = GetComponentInParent<Health>();
         maxHealth = health.HealthCount;
+        healthCount.text = health.HealthCount.ToString();
 
         health.OnDamage += Damage;
         health.OnDeath += Damage;

@@ -12,13 +12,16 @@ public class WeaponData : ScriptableObject
     [SerializeField] private GameObject weaponModel;
 
     [Range(0.01f, 5f)]
-    [SerializeField]private float fireRate;
+    [SerializeField]private float reloadTime;
+    [Range(0.01f, 5f)]
+    [SerializeField] private float minFireRate;
     [Range(1, 5)]
     [SerializeField] private int cellCount;
 
 
     public int CellCount => cellCount;
-    public float FireRate => fireRate;
+    public float ReloadTime => reloadTime;
+    public float MinFireRate => minFireRate;
 
     public string WeaponName => weaponName;
 

@@ -7,9 +7,12 @@ public class CommonBullet : Bullet
     protected override void OnTriggerEnter(Collider other)
     {
         var health = other.GetComponent<Health>();
-        if(health != null)
+        if (health != null)
         {
             health.Damage();
+        }
+        else
+        {
             Destroy(gameObject);
         }
     }

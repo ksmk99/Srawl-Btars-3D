@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Weapon : MonoBehaviour
+public abstract class Weapon : MonoBehaviour
 {
     public WeaponData WeaponData => weaponData;
 
     [SerializeField] protected WeaponData weaponData;
-    [SerializeField] protected Transform shootPoint;
-    [SerializeField] protected WeaponReloadGUI weaponReload;
+    protected Transform shootPoint;
+    protected WeaponReloadGUI weaponReload;
 
-    protected float minFireRate = 0.4f;
+    protected float minFireRate;
     protected float nextFire = 0;
     protected float fireRate;
 
@@ -21,20 +21,16 @@ public class Weapon : MonoBehaviour
     private void Awake()
     {
         animator = GetComponentInParent<Animator>();
-        fireRate = weaponData.FireRate;
+        fireRate = weaponData.ReloadTime;
+        minFireRate = weaponData.MinFireRate;
     }
 
-    public virtual void Shoot()
+    public void SetComponents(Transform shootPoint,
+    WeaponReloadGUI weaponReload)
     {
-        if (Time.time > nextFire && weaponReload.Shoot())
-        {
-            nextFire = Time.time + fireRate * Random.Range(0.65f, 1f);
-            if(weaponReload.CanShoot())
-            {
-                nextFire = Time.time + minFireRate;
-            }
-            Instantiate(weaponData.Bullet, shootPoint.position, shootPoint.rotation);
-            animator.SetTrigger("Attack");
-        }
+        this.shootPoint = shootPoint;
+        this.weaponReload = weaponReload;
     }
+
+    public abstract void Shoot();
 }

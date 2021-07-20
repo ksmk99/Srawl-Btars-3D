@@ -13,10 +13,10 @@ public class ShotGun : Weapon
 
     public override void Shoot()
     {
-        if (Time.time > nextFire)
+        if (Time.time > nextFire && weaponReload.Shoot())
         {
             animator.SetTrigger("Attack");
-            nextFire = Time.time + fireRate;
+            nextFire = Time.time + minFireRate;
             foreach (var vector in vectors)
             {
                 BulletInstantiate(vector);

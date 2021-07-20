@@ -16,6 +16,6 @@ public abstract class Powerup : MonoBehaviour
 
     protected void PickupParticle()
     {
-        Instantiate(pickupParticle, transform.position + Vector3.up, Quaternion.identity);
+        Instantiate(pickupParticle, transform.position + Vector3.up * 2, Quaternion.identity);
     }
 }
