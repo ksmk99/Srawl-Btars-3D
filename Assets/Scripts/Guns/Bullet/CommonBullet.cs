@@ -11,9 +11,12 @@ public class CommonBullet : Bullet
         {
             health.Damage();
         }
-        else
+        var shield = other.GetComponent<Shield>();
+        if (shield != null && 
+            shield.GetComponentInParent<Movement>().gameObject == parent)
         {
-            Destroy(gameObject);
+            return;
         }
+        Destroy(gameObject);
     }
 }

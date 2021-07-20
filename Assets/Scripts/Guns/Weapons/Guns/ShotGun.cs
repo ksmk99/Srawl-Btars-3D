@@ -26,7 +26,8 @@ public class ShotGun : Weapon
 
     private void BulletInstantiate(Vector3 pointMove)
     {
-        var shoot = Instantiate(weaponData.Bullet, shootPoint.position, shootPoint.rotation);
+        var bullet = Instantiate(weaponData.Bullet, shootPoint.position, shootPoint.rotation);
+        bullet.GetComponent<Bullet>().SetParent(GetComponentInParent<Movement>().gameObject);
         shootPoint.Rotate(pointMove);
     }
 }

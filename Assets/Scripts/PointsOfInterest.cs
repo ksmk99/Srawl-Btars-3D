@@ -32,7 +32,7 @@ public class PointsOfInterest : MonoBehaviour
         var pointsWithouPowerup = points
             .Where(x => !pointsDictioanry[x])
             .ToList();
-        if (points.Count == powerupCount)
+        if (points.Count - pointsWithouPowerup.Count == powerupCount)
             return;
 
         var point = pointsWithouPowerup[Random.Range(0, pointsWithouPowerup.Count)];

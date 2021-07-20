@@ -9,7 +9,8 @@ public class Pistol : Weapon
         if (Time.time > nextFire && weaponReload.Shoot())
         {
             nextFire = Time.time + minFireRate;
-            Instantiate(weaponData.Bullet, shootPoint.position, shootPoint.rotation);
+            var bullet = Instantiate(weaponData.Bullet, shootPoint.position, shootPoint.rotation);
+            bullet.GetComponent<Bullet>().SetParent(GetComponentInParent<Movement>().gameObject);
             animator.SetTrigger("Attack");
         }
     }

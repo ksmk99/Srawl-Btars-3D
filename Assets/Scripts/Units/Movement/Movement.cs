@@ -33,6 +33,11 @@ public abstract class Movement : MonoBehaviour
 		{
 			Move();
 		}
+		else
+        {
+			agent.velocity = Vector3.zero;
+			agent.isStopped = true;
+		}
     }
 
 	protected abstract void Move();

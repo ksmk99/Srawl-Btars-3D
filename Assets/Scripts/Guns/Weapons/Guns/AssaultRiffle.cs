@@ -18,7 +18,8 @@ public class AssaultRiffle : Weapon
         for (int i = 0; i < 3; i++)
         {
             animator.SetTrigger("Attack");
-            Instantiate(weaponData.Bullet, shootPoint.position, shootPoint.rotation);
+            var bullet = Instantiate(weaponData.Bullet, shootPoint.position, shootPoint.rotation);
+            bullet.GetComponent<Bullet>().SetParent(GetComponentInParent<Movement>().gameObject);
             yield return new WaitForSeconds(0.075f);
         }
     }

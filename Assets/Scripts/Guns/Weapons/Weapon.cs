@@ -25,8 +25,7 @@ public abstract class Weapon : MonoBehaviour
         minFireRate = weaponData.MinFireRate;
     }
 
-    public void SetComponents(Transform shootPoint,
-    WeaponReloadGUI weaponReload)
+    public void SetComponents(Transform shootPoint, WeaponReloadGUI weaponReload)
     {
         this.shootPoint = shootPoint;
         this.weaponReload = weaponReload;
