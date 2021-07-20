@@ -6,12 +6,12 @@ public class Shield : MonoBehaviour
 {
     [SerializeField] private int activeTime = 7;
 
-    private CapsuleCollider collider;
+    private Collider collider;
     private MeshRenderer meshRenderer;
 
     private void Awake()
     {
-        collider = GetComponent<CapsuleCollider>();
+        collider = GetComponent<Collider>();
         meshRenderer = GetComponent<MeshRenderer>();
     }
 

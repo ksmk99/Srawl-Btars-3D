@@ -320,5 +320,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ccabd7de0710f448a332607410129b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 7950968496801134005}
+  healthBar: {fileID: 7950968496665134473}
   healthCount: {fileID: 6939826530690177110}

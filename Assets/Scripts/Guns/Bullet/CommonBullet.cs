@@ -13,7 +13,7 @@ public class CommonBullet : Bullet
         }
         var shield = other.GetComponent<Shield>();
         if (shield != null && 
-            shield.GetComponentInParent<Movement>().gameObject == parent)
+            shield.GetComponentInParent<UnitShooter>().gameObject == parent)
         {
             return;
         }

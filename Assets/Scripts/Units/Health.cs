@@ -30,7 +30,7 @@ public class Health : MonoBehaviour
         if (healthCount <= 0)
         {
             IsDead = true;
-            GetComponent<CapsuleCollider>().enabled = false;
+            GetComponent<Collider>().enabled = false;
             OnDeath?.Invoke();
         }
         else

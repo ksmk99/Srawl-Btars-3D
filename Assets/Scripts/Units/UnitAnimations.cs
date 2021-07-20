@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerAnimations : MonoBehaviour
+public class UnitAnimations : MonoBehaviour
 {
 	private UnitShooter shooter;
 	private Movement movement;

@@ -16,11 +16,11 @@ public class AssaultRiffle : Weapon
     private IEnumerator ShootPattern()
     {
         for (int i = 0; i < 3; i++)
-        {
-            animator.SetTrigger("Attack");
+        { 
             var bullet = Instantiate(weaponData.Bullet, shootPoint.position, shootPoint.rotation);
-            bullet.GetComponent<Bullet>().SetParent(GetComponentInParent<Movement>().gameObject);
+            bullet.GetComponent<Bullet>().SetParent(GetComponentInParent<UnitShooter>().gameObject);
             yield return new WaitForSeconds(0.075f);
+            animator?.SetTrigger("Attack");
         }
     }
 }

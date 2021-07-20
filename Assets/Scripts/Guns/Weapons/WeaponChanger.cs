@@ -7,6 +7,8 @@ public class WeaponChanger : MonoBehaviour
 {
     public Weapon Weapon { get; private set; }
 
+    public Transform ShootPoint => shootPoint;
+
     [SerializeField] private Weapon[] weapons;
 
     [SerializeField] private Transform shootPoint;

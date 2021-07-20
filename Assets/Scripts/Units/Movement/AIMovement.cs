@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(EnemyShooter))]
-public class EnemyMovement : Movement
+[RequireComponent(typeof(AIShooter))]
+public class AIMovement : Movement
 {
     public override bool IsMoving => agent.stoppingDistance <= distanceToTarget;
 
-    private EnemyShooter shooter;
+    private AIShooter shooter;
+    private Transform pointOfInterest;
     private Transform target;
 
     private float maxWalkDistance = 50f;
@@ -19,8 +20,8 @@ public class EnemyMovement : Movement
     private void Start()
     {
         stoppingDistance = agent.stoppingDistance;
-        target = transform;
-        shooter = GetComponent<EnemyShooter>();
+        pointOfInterest = transform;
+        shooter = GetComponent<AIShooter>();
         GetTarget();
 
         GetComponent<Health>().OnDamage += () =>
@@ -39,7 +40,7 @@ public class EnemyMovement : Movement
         if (shooter.HaveEnemy && !needPowerup)
         {
             distanceToTarget = Vector3.Distance(transform.position, shooter.Target.position);
-            if (agent.stoppingDistance * 1.2f < distanceToTarget)
+            if (agent.stoppingDistance * 1.5f < distanceToTarget)
             {
                 agent.SetDestination(shooter.Target.position);
             }
@@ -59,7 +60,7 @@ public class EnemyMovement : Movement
 
     private void GetTarget(bool needPowerup = false)
     {
-        var position = PointsOfInterest.Instance.GetPoint(target.position, needPowerup);
+        var position = PointsOfInterest.Instance.GetPoint(pointOfInterest.position, needPowerup);
         agent.SetDestination(position);
     }
 }

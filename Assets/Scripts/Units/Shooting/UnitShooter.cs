@@ -12,11 +12,11 @@ public abstract class UnitShooter : MonoBehaviour
 	public Transform Target => target;
 
 	[Header("Settings")]
-	[SerializeField] protected float turnSmoothTime = 0.2f;
 	[SerializeField] protected float visibleRange = 20f;
-
+	[Header("Layers")]
 	[SerializeField] protected LayerMask enemyLayer;
 	[SerializeField] protected LayerMask bulletLayer;
+	[SerializeField] private LayerMask obstaclesLayer;
 
 	protected WeaponChanger weaponChanger;
 	protected Transform target;
@@ -35,7 +35,7 @@ public abstract class UnitShooter : MonoBehaviour
 		GetComponent<Health>().OnDeath += () => canShoot = false;
 	}
 
-	protected void GetEnemy()
+	protected virtual void GetEnemy()
 	{
 		var targets = Physics.OverlapSphere(transform.position, visibleRange, enemyLayer.value)
 			.Where(x => x.transform != transform)
@@ -68,5 +68,11 @@ public abstract class UnitShooter : MonoBehaviour
 		}
 
 		return result;
+	}
+
+	protected bool CanSeeEnemy(Vector3 position)
+	{
+		RaycastHit hit;
+		return !Physics.Linecast(transform.position, position, out hit, obstaclesLayer.value);
 	}
 }

@@ -17,7 +17,13 @@ public class RPGBullet : Bullet
                 unit.GetComponent<Health>()?.Damage();
             }
             Instantiate(boomParticle, transform.position, Quaternion.identity);
-            Destroy(gameObject);
         }
+        var shield = other.GetComponent<Shield>();
+        if (shield != null &&
+            shield.GetComponentInParent<UnitShooter>().gameObject == parent)
+        {
+            return;
+        }
+        Destroy(gameObject);
     }
 }

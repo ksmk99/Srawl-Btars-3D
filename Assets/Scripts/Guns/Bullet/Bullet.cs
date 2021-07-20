@@ -11,7 +11,7 @@ public abstract class Bullet : MonoBehaviour
 
     protected GameObject parent;
 
-    public void SetParent(GameObject parent) => this.parent = parent; 
+    public void SetParent(GameObject parent) => this.parent = parent;
 
     protected virtual void Start()
     {

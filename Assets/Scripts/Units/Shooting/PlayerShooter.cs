@@ -21,7 +21,7 @@ public class PlayerShooter : UnitShooter
 	private void Shoot(Vector3 direction)
     {
 		if (!weaponReload.Shoot() || !canShoot) return;
-		if(direction == new Vector3(0,0,0))
+		if(direction == new Vector3(0,0,0) && CanSeeEnemy(target.position))
         {
 			GetEnemy();
 			if(HaveEnemy)

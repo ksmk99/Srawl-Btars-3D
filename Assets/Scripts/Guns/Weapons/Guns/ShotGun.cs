@@ -15,7 +15,7 @@ public class ShotGun : Weapon
     {
         if (Time.time > nextFire && weaponReload.Shoot())
         {
-            animator.SetTrigger("Attack");
+            animator?.SetTrigger("Attack");
             nextFire = Time.time + minFireRate;
             foreach (var vector in vectors)
             {
@@ -27,7 +27,7 @@ public class ShotGun : Weapon
     private void BulletInstantiate(Vector3 pointMove)
     {
         var bullet = Instantiate(weaponData.Bullet, shootPoint.position, shootPoint.rotation);
-        bullet.GetComponent<Bullet>().SetParent(GetComponentInParent<Movement>().gameObject);
+        bullet.GetComponent<Bullet>().SetParent(GetComponentInParent<UnitShooter>().gameObject);
         shootPoint.Rotate(pointMove);
     }
 }
