@@ -13,8 +13,16 @@ public abstract class Movement : MonoBehaviour
 	protected NavMeshAgent agent;
 	protected bool canMove = true;
 
+	private float startSpeed;
+
+	public void UpdateSpeed(float speed, bool resetSpeed = false)
+	{
+		this.speed = resetSpeed ? startSpeed : speed;
+	}
+
 	protected virtual void Awake()
     {
+		startSpeed = speed;
 		SetComponents();
 		GetComponent<Health>().OnDeath += () => canMove = false;
 	}

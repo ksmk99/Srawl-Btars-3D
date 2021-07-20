@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: RPG
   m_EditorClassIdentifier: 
   weaponName: RPG
-  description: 
   icon: {fileID: 0}
   bullet: {fileID: 6808099510543832547, guid: 7fd40b3cb4dee274282f9667546ad378, type: 3}
   weaponModel: {fileID: 4466197679962963556, guid: bcd1f44176ef00149aaf11ba79beb179, type: 3}
   fireRate: 2
-  minFireRate: 0
+  cellCount: 1

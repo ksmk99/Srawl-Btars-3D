@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   weaponName: Shptgun
-  description: 
   icon: {fileID: 0}
   bullet: {fileID: 6743603258472832586, guid: 3be39f97bfa991e45b49303981d08f39, type: 3}
   weaponModel: {fileID: 8588236859647759260, guid: a06bdfcf04f66a242b1bd05b048c59a3, type: 3}
   fireRate: 0.9
-  minFireRate: 0
+  cellCount: 2

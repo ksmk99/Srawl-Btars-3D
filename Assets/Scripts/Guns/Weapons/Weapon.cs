@@ -12,7 +12,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected Transform shootPoint;
     [SerializeField] protected WeaponReloadGUI weaponReload;
 
-    protected float minFireRate = 0.2f;
+    protected float minFireRate = 0.4f;
     protected float nextFire = 0;
     protected float fireRate;
 

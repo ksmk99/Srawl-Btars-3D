@@ -1086,7 +1086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c7df3cf9e6ce54bb13879193f7963c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthCount: 5
+  healthCount: 10
 --- !u!114 &4291557953866914155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1750,15 +1750,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4752493470297622627, guid: 9c90129bbd14fdc4b8f4392d08e49d2e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4752493470297622627, guid: 9c90129bbd14fdc4b8f4392d08e49d2e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4752493470297622627, guid: 9c90129bbd14fdc4b8f4392d08e49d2e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4752493470297622627, guid: 9c90129bbd14fdc4b8f4392d08e49d2e, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1784,6 +1784,10 @@ PrefabInstance:
       propertyPath: weaponChanger
       value: 
       objectReference: {fileID: 484059447466227755}
+    - target: {fileID: 5135777394625141787, guid: 9c90129bbd14fdc4b8f4392d08e49d2e, type: 3}
+      propertyPath: reloadCellPrefab
+      value: 
+      objectReference: {fileID: 3229304814879433091, guid: ffea618bd2c5f5a4b89af34a3d8cec98, type: 3}
     - target: {fileID: 5698286809497390228, guid: 9c90129bbd14fdc4b8f4392d08e49d2e, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1792,6 +1796,14 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 3695640590758218291}
+    - target: {fileID: 6216573371360191028, guid: 9c90129bbd14fdc4b8f4392d08e49d2e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bc9ce8b48eff29249ae9dc98d73a44e7, type: 3}
+    - target: {fileID: 6216573371496829448, guid: 9c90129bbd14fdc4b8f4392d08e49d2e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bc9ce8b48eff29249ae9dc98d73a44e7, type: 3}
     - target: {fileID: 9053473561504322682, guid: 9c90129bbd14fdc4b8f4392d08e49d2e, type: 3}
       propertyPath: m_Name
       value: Unit Canvas

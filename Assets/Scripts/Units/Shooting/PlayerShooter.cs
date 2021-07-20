@@ -20,7 +20,7 @@ public class PlayerShooter : UnitShooter
 
 	private void Shoot(Vector3 direction)
     {
-		if (!weaponReload.Shoot()) return;
+		if (!weaponReload.Shoot() || !canShoot) return;
 		if(direction == new Vector3(0,0,0))
         {
 			GetEnemy();

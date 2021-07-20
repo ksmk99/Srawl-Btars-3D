@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Rifle
   m_EditorClassIdentifier: 
   weaponName: Rifle
-  description: 
   icon: {fileID: 0}
   bullet: {fileID: 6743603258472832586, guid: 3be39f97bfa991e45b49303981d08f39, type: 3}
   weaponModel: {fileID: 6089743462073523375, guid: b6559d5ac89935d47b6b92c90bf5c690, type: 3}
   fireRate: 0.4
-  minFireRate: 0
+  cellCount: 2

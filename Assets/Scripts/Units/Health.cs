@@ -9,10 +9,18 @@ public class Health : MonoBehaviour
 
     public int HealthCount => healthCount;
 
+    public event Action OnHeal;
     public event Action OnDeath;
     public event Action OnDamage;
 
     [SerializeField] private int healthCount = 5;
+
+    private int maxHealth;
+
+    private void Awake()
+    {
+        maxHealth = healthCount;
+    }
 
     public void Damage()
     {
@@ -29,5 +37,12 @@ public class Health : MonoBehaviour
         {
             OnDamage?.Invoke();
         }
+    }
+
+    public void Heal(int count)
+    {
+        healthCount += count;
+        healthCount = healthCount > maxHealth ? maxHealth : healthCount;
+        OnHeal?.Invoke();
     }
 }

@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   weaponName: Pistol
-  description: 
   icon: {fileID: 0}
   bullet: {fileID: 4037171374735252188, guid: 05dec8ad94afcc24684200bf7d7d3c30, type: 3}
   weaponModel: {fileID: 1679275848036580472, guid: af25151a1db93ee45beca76f4faf13ae, type: 3}
   fireRate: 0.8
-  minFireRate: 0
+  cellCount: 4
