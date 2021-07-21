@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MultiplyUnit : Unit
 {
-    [SerializeField] private GameObject unit;
+    [SerializeField] private GameObject unitPrefab;
 
     private Vector3[] positions = new Vector3[4]
     {
@@ -14,11 +14,20 @@ public class MultiplyUnit : Unit
         new Vector3(-2, 0, -2),
     };
 
+    protected override void Awake()
+    {
+        if (GetComponent<AIMovement>() != null)
+        {
+            GetComponent<Health>().OnDeath += MakeAction;
+        }
+    }
+
     protected override void UnitAction()
     {
         for (int i = 0; i < 4; i++)
         {
-            Instantiate(unit, transform.position + positions[i], Quaternion.identity);
+            var unit = Instantiate(unitPrefab, transform.position + positions[i], Quaternion.identity);
+            unit.transform.parent = transform.parent;
         }
     }
 }

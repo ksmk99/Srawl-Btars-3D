@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+[RequireComponent(typeof(Animator))]
 public class VariableJoystick : Joystick
 {
     public float MoveThreshold { get { return moveThreshold; } set { moveThreshold = Mathf.Abs(value); } }
@@ -12,6 +13,8 @@ public class VariableJoystick : Joystick
 
     private Vector2 fixedPosition = Vector2.zero;
 
+    private Animator animator;
+
     public void SetMode(JoystickType joystickType)
     {
         this.joystickType = joystickType;
@@ -20,8 +23,6 @@ public class VariableJoystick : Joystick
             background.anchoredPosition = fixedPosition;
             background.gameObject.SetActive(true);
         }
-        //else
-            //background.gameObject.SetActive(false);
     }
 
     protected override void Start()
@@ -29,6 +30,7 @@ public class VariableJoystick : Joystick
         base.Start();
         fixedPosition = background.anchoredPosition;
         SetMode(joystickType);
+        animator = GetComponent<Animator>();
     }
 
     public override void OnPointerDown(PointerEventData eventData)
@@ -36,17 +38,15 @@ public class VariableJoystick : Joystick
         if(joystickType != JoystickType.Fixed)
         {
             background.anchoredPosition = ScreenPointToAnchoredPosition(eventData.position);
-            //background.gameObject.SetActive(true);
         }
         base.OnPointerDown(eventData);
     }
 
     public override void OnPointerUp(PointerEventData eventData)
     {
-        //if(joystickType != JoystickType.Fixed)
-        //    background.gameObject.SetActive(false);
-
+        animator.Play("Replace");
         base.OnPointerUp(eventData);
+        background.anchoredPosition = fixedPosition;
     }
 
     protected override void HandleInput(float magnitude, Vector2 normalised, Vector2 radius, Camera cam)

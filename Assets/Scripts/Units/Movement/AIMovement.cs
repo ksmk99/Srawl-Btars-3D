@@ -17,16 +17,16 @@ public class AIMovement : Movement
     private float stoppingDistance;
     private bool needPowerup;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         stoppingDistance = agent.stoppingDistance;
         pointOfInterest = transform;
         shooter = GetComponent<AIShooter>();
-        GetTarget();
 
         GetComponent<Health>().OnDamage += () =>
         {
-            if (Random.Range(0, 4) == 0)
+            if (Random.Range(0, 10) == 0)
             {
                 needPowerup = true;
                 agent.stoppingDistance = 0.1f;
@@ -36,7 +36,7 @@ public class AIMovement : Movement
     }
 
     protected override void Move()
-    {
+    {     
         if (shooter.HaveEnemy && !needPowerup)
         {
             distanceToTarget = Vector3.Distance(transform.position, shooter.Target.position);
@@ -47,6 +47,7 @@ public class AIMovement : Movement
         }
         else
         {
+            if (target == null) GetTarget();
             distanceToTarget = Vector3.Distance(transform.position, agent.destination);
             if (agent.stoppingDistance > distanceToTarget)
             {

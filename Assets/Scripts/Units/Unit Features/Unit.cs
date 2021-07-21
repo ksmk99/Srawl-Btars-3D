@@ -4,18 +4,16 @@ using UnityEngine;
 
 public abstract class Unit : MonoBehaviour
 {
-    public bool CanDoAction => Time.time - nextUseTime > 0;
-
     [SerializeField] private float reloadTime = 10f;
 
     private float nextUseTime;
 
     public void MakeAction()
     {
-        if (CanDoAction)
+        if (Time.time - nextUseTime > 0)
         {
             UnitAction();
-            ReloadAction();
+            nextUseTime = Time.time + reloadTime;
         }
     }
 
@@ -23,14 +21,10 @@ public abstract class Unit : MonoBehaviour
 
     protected virtual void Awake()
     {
+        nextUseTime = Time.time;
         if (GetComponent<AIMovement>() != null)
         {
-            GetComponent<Health>().OnDeath += MakeAction;
+            GetComponent<Health>().OnDamage += MakeAction;
         }
-    }
-
-    private void ReloadAction()
-    {
-        nextUseTime = Time.time + reloadTime;
     }
 }

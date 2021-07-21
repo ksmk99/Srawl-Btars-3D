@@ -11,20 +11,21 @@ public abstract class Movement : MonoBehaviour
 	[SerializeField] protected float speed = 5f;
 
 	protected NavMeshAgent agent;
-	protected bool canMove = true;
+	protected bool canMove;
 
 	private float startSpeed;
 
 	public void UpdateSpeed(float speed, bool resetSpeed = false)
 	{
 		this.speed = resetSpeed ? startSpeed : speed;
+		agent.speed = this.speed;
 	}
 
-	protected virtual void Awake()
+	protected virtual void Start()
     {
 		startSpeed = speed;
 		SetComponents();
-		GetComponent<Health>().OnDeath += () => canMove = false;
+		EventSubscribe();
 	}
 
 	protected virtual void Update()
@@ -45,5 +46,29 @@ public abstract class Movement : MonoBehaviour
 	protected virtual void SetComponents()
     {
 		agent = GetComponent<NavMeshAgent>();
+	}
+
+	private void EventSubscribe()
+    {
+		GameManager.Instance.OnGameStart += () =>
+		{
+			agent.isStopped = false;
+			canMove = true;
+		};
+		GameManager.Instance.OnGameLoose += () => canMove = false;
+		GameManager.Instance.OnGameWin += () => canMove = false;
+		GetComponent<Health>().OnDeath += () => canMove = false;
+	}
+
+    private void OnDestroy()
+    {
+		GameManager.Instance.OnGameStart -= () =>
+		{
+			agent.isStopped = false;
+			canMove = true;
+		};
+		GameManager.Instance.OnGameLoose -= () => canMove = false;
+		GameManager.Instance.OnGameWin -= () => canMove = false;
+		GetComponent<Health>().OnDeath -= () => canMove = false;
 	}
 }

@@ -6,8 +6,6 @@ using UnityEngine.AI;
 
 public class PlayerMovement : Movement
 {
-	public static PlayerMovement Instance { get; private set; }
-
 	public Vector3 MoveDirection { get; private set; }
 
 	public override bool IsMoving => MoveDirection.sqrMagnitude != 0;
@@ -15,9 +13,9 @@ public class PlayerMovement : Movement
 	[SerializeField] private VariableJoystick movementJoystick;
 	[SerializeField] private VariableJoystick shooterJoystick;
 
-	private void Start()
+	protected override void Start()
 	{
-		Instance = this;
+		base.Start();
 		agent.updateRotation = true;
 	}
 

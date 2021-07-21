@@ -13,6 +13,6 @@ public class TankUnit : Unit
 
     protected override void UnitAction()
     {
-        health.Heal(int.MaxValue);
+        health.Heal(100);
     }
 }

@@ -11,8 +11,9 @@ public class PlayerShooter : UnitShooter
 
     public override bool IsShooting => false;
 
-    protected void Start()
+    protected override void Start()
     {
+		base.Start();
 		animator = GetComponent<Animator>();
 
 		shooterJoystick.OnTouchEnd += Shoot; 
@@ -21,13 +22,16 @@ public class PlayerShooter : UnitShooter
 	private void Shoot(Vector3 direction)
     {
 		if (!weaponReload.Shoot() || !canShoot) return;
-		if(direction == new Vector3(0,0,0) && CanSeeEnemy(target.position))
+		if(direction == new Vector3(0,0,0) && CanSeeEnemy())
         {
 			GetEnemy();
 			if(HaveEnemy)
             {
-				transform.LookAt(target.position);
-            }
+				var agent = target.GetComponent<NavMeshAgent>();
+				var lookTarget = target.position + 
+					(agent == null ? Vector3.zero :agent.velocity.normalized);
+				transform.LookAt(lookTarget);
+			}
         }
 		weaponChanger.Weapon.Shoot();
     }

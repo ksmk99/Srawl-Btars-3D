@@ -24,15 +24,12 @@ public abstract class UnitShooter : MonoBehaviour
 	protected WeaponReloadGUI weaponReload;
 
 	protected float turnSmoothVelocity;
-	protected bool canShoot = true;
+	protected bool canShoot;
 
-	protected virtual void Awake()
+	protected virtual void Start()
 	{
-		weaponReload = GetComponentInChildren<WeaponReloadGUI>();
-		weaponChanger = GetComponentInChildren<WeaponChanger>();
-		health = GetComponent<Health>();
-
-		GetComponent<Health>().OnDeath += () => canShoot = false;
+		SetComponents();
+		EventSubscribe();
 	}
 
 	protected virtual void GetEnemy()
@@ -51,7 +48,7 @@ public abstract class UnitShooter : MonoBehaviour
 		target = CalculateNearestTarget(targets);
 	}
 
-	private Transform CalculateNearestTarget(Transform[] targets)
+	protected Transform CalculateNearestTarget(Transform[] targets)
     {
 		Transform result = null;
 		var minDistance = float.MaxValue;
@@ -70,9 +67,33 @@ public abstract class UnitShooter : MonoBehaviour
 		return result;
 	}
 
-	protected bool CanSeeEnemy(Vector3 position)
+	protected bool CanSeeEnemy()
 	{
+		if (target == null) return true;
 		RaycastHit hit;
-		return !Physics.Linecast(transform.position, position, out hit, obstaclesLayer.value);
+		return !Physics.Linecast(transform.position, target.position, out hit, obstaclesLayer.value);
+	}
+
+	private void SetComponents()
+    {
+		weaponReload = GetComponentInChildren<WeaponReloadGUI>();
+		weaponChanger = GetComponentInChildren<WeaponChanger>();
+		health = GetComponent<Health>();
+	}
+
+	private void EventSubscribe()
+	{
+		GetComponent<Health>().OnDeath += () => canShoot = false;
+		GameManager.Instance.OnGameStart += () => canShoot = true;
+		GameManager.Instance.OnGameLoose += () => canShoot = false;
+		GameManager.Instance.OnGameWin += () => canShoot = false;
+	}
+
+	private void OnDestroy()
+	{
+		GetComponent<Health>().OnDeath -= () => canShoot = false;
+		GameManager.Instance.OnGameStart -= () => canShoot = true;
+		GameManager.Instance.OnGameLoose -= () => canShoot = false;
+		GameManager.Instance.OnGameWin -= () => canShoot = false;
 	}
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TurretShooter : UnitShooter
 {
-	public override bool IsShooting => HaveEnemy && CanSeeEnemy(target.position);
+	public override bool IsShooting => HaveEnemy && CanSeeEnemy();
 
 	public Transform Owner { get; private set; }
 
@@ -21,7 +21,7 @@ public class TurretShooter : UnitShooter
 
 	private void LateUpdate()
 	{
-		if (HaveEnemy && !health.IsDead && CanSeeEnemy(target.position))
+		if (HaveEnemy && !health.IsDead && CanSeeEnemy())
 		{
 			weaponChanger.Weapon.Shoot();
 		}
