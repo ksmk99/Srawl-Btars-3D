@@ -8,6 +8,8 @@ public class GameEndGUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text resultText;
 
+    private bool isFirstTime = true;
+
     private void Start()
     {
         GameManager.Instance.OnPlayerLoose += () => GameEnd(false);
@@ -16,10 +18,11 @@ public class GameEndGUI : MonoBehaviour
 
     private void GameEnd(bool isWin)
     {
-        GameManager.Instance.OnPlayerLoose -= () => GameEnd(false);
-        GameManager.Instance.OnGameEnd -= () => GameEnd(true);
-
-        resultText.text = isWin ? "YOU WON" : "YOU LOOSE";
-        GetComponent<Animation>().Play();
+        if (isFirstTime)
+        {
+            isFirstTime = false;
+            resultText.text = isWin ? "YOU WON" : "YOU LOOSE";
+            GetComponent<Animation>().Play();
+        }
     }
 }
