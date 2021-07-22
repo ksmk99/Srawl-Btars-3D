@@ -26,12 +26,29 @@ public class WeaponChanger : MonoBehaviour
         {
             if(weapon.WeaponData == data)
             {
-                Weapon.gameObject.SetActive(false);
-                weapon.gameObject.SetActive(true);
-                Weapon = weapon;
-                Weapon.SetComponents(shootPoint, weaponReload);
+                UpdateWeapon(weapon);
                 break;
             }
         }
+    }
+
+    public void ChangeWeapon(string name)
+    {
+        foreach (var weapon in weapons)
+        {
+            if (string.Compare(weapon.WeaponData.name, name, true) == 1)
+            {
+                UpdateWeapon(weapon);
+                break;
+            }
+        }
+    }
+
+    private void UpdateWeapon(Weapon weapon)
+    {
+        Weapon.gameObject.SetActive(false);
+        weapon.gameObject.SetActive(true);
+        Weapon = weapon;
+        Weapon.SetComponents(shootPoint, weaponReload);
     }
 }

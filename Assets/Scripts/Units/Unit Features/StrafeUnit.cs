@@ -4,13 +4,33 @@ using UnityEngine;
 
 public class StrafeUnit : Unit
 {
-    [SerializeField] private float speed = 10f;
-    [SerializeField] private float speedUpTime = 4f;
+    private float speed = 10f;
+    private float speedUpTime = 4f;
 
     private float minTime = 10f;
     private float maxTime = 15f;
 
     private Movement movement;
+
+
+    public override void SetVariant(string variant)
+    {
+        switch(variant)
+        {
+            case "DURATION":
+                {
+                    speed = 8;
+                    speedUpTime = 6;
+                    break;
+                }
+            case "RELOAD":
+                {
+                    speed = 10;
+                    speedUpTime = 4;
+                    break;
+                }
+        }
+    }
 
     protected override void UnitAction()
     {

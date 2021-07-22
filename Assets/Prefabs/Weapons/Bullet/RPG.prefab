@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6444336533193745720}
   - component: {fileID: 2475203444522324048}
   m_Layer: 7
-  m_Name: Bullet RPG
+  m_Name: RPG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

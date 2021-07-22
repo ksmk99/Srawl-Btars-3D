@@ -5076,7 +5076,7 @@ GameObject:
   - component: {fileID: 4595654756050798}
   - component: {fileID: 7780736713059105466}
   m_Layer: 0
-  m_Name: Turret Rifle
+  m_Name: RIFLE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

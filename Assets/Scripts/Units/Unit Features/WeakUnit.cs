@@ -4,5 +4,7 @@ using UnityEngine;
 
 public class WeakUnit : Unit
 {
+    public override void SetVariant(string variant) { }
+
     protected override void UnitAction() { }
 }

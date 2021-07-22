@@ -12,7 +12,7 @@ public class AbilityChoose : MonoBehaviour
 
     private TMP_Dropdown dropdown;
 
-    private void Awake()
+    private void Start()
     {
         dropdown = GetComponentInChildren<TMP_Dropdown>();
 

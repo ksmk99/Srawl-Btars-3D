@@ -14,6 +14,11 @@ public class MultiplyUnit : Unit
         new Vector3(-2, 0, -2),
     };
 
+    public override void SetVariant(string variant)
+    {
+        return;
+    }
+
     protected override void Awake()
     {
         if (GetComponent<AIMovement>() != null)

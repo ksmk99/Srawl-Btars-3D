@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 4924783946067484}
   - component: {fileID: 6038823814024879865}
   m_Layer: 0
-  m_Name: Turret Rocket
+  m_Name: RPG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

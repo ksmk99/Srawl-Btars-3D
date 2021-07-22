@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class ShotgunUnit : Unit
 {
-    [SerializeField] private WeaponData weaponData;
-
+    private WeaponData weaponData;
     private WeaponChanger weaponChanger;
+
+    public override void SetVariant(string variant)
+    {
+        weaponData = Resources.Load<WeaponData>("Abilities/Bullet Line/" + variant);
+    }
 
     private void Start()
     {

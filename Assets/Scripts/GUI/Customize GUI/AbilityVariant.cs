@@ -52,7 +52,9 @@ public class AbilityVariant : MonoBehaviour
         {
             dropdown.options.Add(new TMP_Dropdown.OptionData(option));
         }
-        dropdown.Show();
+        dropdown.value = 0;
+        dropdown.enabled = false;
+        dropdown.enabled = true;
         Variant = dropdown.options[0].text;
     }
 

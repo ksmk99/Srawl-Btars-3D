@@ -4,9 +4,11 @@ using UnityEngine;
 
 public abstract class Unit : MonoBehaviour
 {
-    [SerializeField] private float reloadTime = 10f;
+    protected float reloadTime = 10f;
 
     private float nextUseTime;
+
+    public abstract void SetVariant(string variant);
 
     public void MakeAction()
     {

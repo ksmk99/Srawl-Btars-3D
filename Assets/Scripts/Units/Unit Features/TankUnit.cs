@@ -5,6 +5,26 @@ using UnityEngine;
 public class TankUnit : Unit
 {
     private Health health;
+    private int count;
+
+    public override void SetVariant(string variant)
+    {
+        switch (variant)
+        {
+            case "COUNT":
+                {
+                    count = 5;
+                    reloadTime = 10;
+                    break;
+                }
+            case "RELOAD":
+                {
+                    count = 2;
+                    reloadTime = 5;
+                    break;
+                }
+        }
+    }
 
     private void Start()
     {
@@ -13,6 +33,6 @@ public class TankUnit : Unit
 
     protected override void UnitAction()
     {
-        health.Heal(100);
+        health.Heal(count);
     }
 }

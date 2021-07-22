@@ -24,7 +24,7 @@ public class DrinkPowerup : Powerup
     private IEnumerator NormolizeSpeed(Movement movement)
     {
         yield return new WaitForSeconds(time);
-        movement.UpdateSpeed(0, true);
+        movement?.UpdateSpeed(0, true);
         Destroy(gameObject);
     }
 }
