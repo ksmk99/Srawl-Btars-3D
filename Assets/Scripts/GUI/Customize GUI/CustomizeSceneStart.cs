@@ -24,30 +24,8 @@ public class CustomizeSceneStart : MonoBehaviour
 
     private void Save()
     {
-        var unitData = new UnitData(weaponChoose.GunName,
-            abilityChoose.Ability, abilityVariant.Variant);
-
-        var data = JsonUtility.ToJson(unitData);
-        var path = Application.dataPath + "/Resources/Unit.json";
-
-        StreamWriter sw = File.CreateText(path);
-        sw.Close();
-
-        File.WriteAllText(path, data);
-    }
-}
-
-[System.Serializable]
-public class UnitData
-{
-    public string GunName;
-    public string Ability;
-    public string Variant;
-
-    public UnitData(string gunName, string ability, string variant)
-    {
-        GunName = gunName;
-        Ability = ability;
-        Variant = variant;
+        PlayerPrefs.SetString("GunName", weaponChoose.GunName);
+        PlayerPrefs.SetString("Ability", abilityChoose.Ability);
+        PlayerPrefs.SetString("Variant", abilityVariant.Variant);
     }
 }

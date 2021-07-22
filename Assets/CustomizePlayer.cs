@@ -7,11 +7,8 @@ public class CustomizePlayer : MonoBehaviour
 {
     private void Awake()
     {
-        var data = Resources.Load<TextAsset>("UnitData");
-        var unitData = JsonUtility.FromJson<UnitData>(data.text);
-
-        ChooseWeapon(unitData.GunName);
-        SelectAbility(unitData.Ability, unitData.Variant);
+        ChooseWeapon(PlayerPrefs.GetString("GunName"));
+        SelectAbility(PlayerPrefs.GetString("Ability"), PlayerPrefs.GetString("Variant"));
     }
 
     private void ChooseWeapon(string gunName)

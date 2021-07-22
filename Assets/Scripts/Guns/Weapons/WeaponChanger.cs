@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,8 +36,8 @@ public class WeaponChanger : MonoBehaviour
     public void ChangeWeapon(string name)
     {
         foreach (var weapon in weapons)
-        {
-            if (string.Compare(weapon.WeaponData.name, name, true) == 1)
+        {          
+            if (weapon.WeaponData.name.ToLower() == name.ToLower())
             {
                 UpdateWeapon(weapon);
                 break;

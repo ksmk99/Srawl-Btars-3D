@@ -11,9 +11,16 @@ public class TurretUnit : Unit
         turret = Resources.Load<Turret>("Abilities/Turret/" + variant);
     }
 
+    private void Start()
+    {
+        var data = Resources.LoadAll<Turret>("Abilities/Turret");
+        turret = data[Random.Range(0, data.Length)];
+    }
+
     protected override void UnitAction()
     {
         var unit = Instantiate(turret, transform.position + new Vector3(2, 1, 2), Quaternion.identity);
-        unit.GetComponentInChildren<TurretShooter>().SetOwner(transform);
+        var turretShooter = unit.GetComponentInChildren<TurretShooter>();
+        turretShooter.SetOwner(transform);
     }
 }

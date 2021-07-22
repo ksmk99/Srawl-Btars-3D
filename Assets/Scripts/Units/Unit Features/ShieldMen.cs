@@ -12,6 +12,12 @@ public class ShieldMen : Unit
         shieldPrefab = Resources.Load<Shield>("Abilities/Shield/" + variant);
     }
 
+    private void Start()
+    {
+        var shields = Resources.LoadAll<Shield>("Abilities/Shield");
+        shieldPrefab = shields[Random.Range(0, shields.Length)];
+    }
+
     protected override void UnitAction()
     {
         var shield = Instantiate(shieldPrefab, transform);

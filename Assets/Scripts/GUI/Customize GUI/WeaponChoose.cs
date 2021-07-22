@@ -13,7 +13,11 @@ public class WeaponChoose : MonoBehaviour
     private void Awake()
     {
         dropdown = GetComponentInChildren<TMP_Dropdown>();
-        dropdown.onValueChanged.AddListener((x) => GunName = dropdown.options[x].text);
+        dropdown.onValueChanged.AddListener(
+            (x) =>
+            {
+                GunName = dropdown.options[x].text;
+            });
         GunName = dropdown.options[0].text;
     }
 }

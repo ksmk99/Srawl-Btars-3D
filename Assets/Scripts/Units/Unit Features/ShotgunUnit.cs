@@ -15,6 +15,8 @@ public class ShotgunUnit : Unit
     private void Start()
     {
         weaponChanger = GetComponentInChildren<WeaponChanger>();
+        var data = Resources.LoadAll<WeaponData>("Abilities/Bullet Line");
+        weaponData = data[Random.Range(0, data.Length)];
     }
 
     protected override void UnitAction()
@@ -25,6 +27,5 @@ public class ShotgunUnit : Unit
             bullet.name = "Bullet";
             bullet.GetComponent<Bullet>().SetParent(GetComponentInParent<UnitShooter>().gameObject);
         }
-        Debug.Log("Bullets");
     }
 }
