@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class AbilityButton : MonoBehaviour
 {
     [SerializeField] private PlayerShooter player;
-    [SerializeField] private Text text;
 
     private Unit unit;
     private Button button;
@@ -22,7 +21,6 @@ public class AbilityButton : MonoBehaviour
 
     public void UseAbility()
     {
-        text.text = "Action " + Time.time;
         unit.MakeAction();
         StartCoroutine(ReloadCell(unit.ReloadTime));
     }

@@ -85,15 +85,13 @@ public abstract class UnitShooter : MonoBehaviour
 	{
 		GetComponent<Health>().OnDeath += () => canShoot = false;
 		GameManager.Instance.OnGameStart += () => canShoot = true;
-		GameManager.Instance.OnGameLoose += () => canShoot = false;
-		GameManager.Instance.OnGameWin += () => canShoot = false;
+		GameManager.Instance.OnGameEnd += () => canShoot = false;
 	}
 
 	private void OnDestroy()
 	{
 		GetComponent<Health>().OnDeath -= () => canShoot = false;
 		GameManager.Instance.OnGameStart -= () => canShoot = true;
-		GameManager.Instance.OnGameLoose -= () => canShoot = false;
-		GameManager.Instance.OnGameWin -= () => canShoot = false;
+		GameManager.Instance.OnGameEnd -= () => canShoot = false;
 	}
 }

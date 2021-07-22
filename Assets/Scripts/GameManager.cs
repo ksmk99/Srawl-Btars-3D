@@ -10,23 +10,23 @@ public class GameManager : MonoBehaviour
 
     public bool IsGameEnd { get; private set; }
 
-    public event Action OnGameLoose;
-    public event Action OnGameWin;
+    public event Action OnPlayerLoose;
+    public event Action OnGameEnd;
     public event Action OnGameStart;
 
     public void GameStart() => OnGameStart?.Invoke();
 
-    public void GameLoose()
+    public void PlayerDeath()
     {
         IsGameEnd = true;
-        OnGameLoose?.Invoke();
+        OnPlayerLoose?.Invoke();
 
     }
 
-    public void GameWin()
+    public void GameEnd()
     {
         IsGameEnd = true;
-        OnGameWin?.Invoke();
+        OnGameEnd?.Invoke();
     }
 
     private void Awake()

@@ -10,12 +10,15 @@ public class GameEndGUI : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.OnGameLoose += () => GameEnd(false);
-        GameManager.Instance.OnGameWin += () => GameEnd(true);
+        GameManager.Instance.OnPlayerLoose += () => GameEnd(false);
+        GameManager.Instance.OnGameEnd += () => GameEnd(true);
     }
 
     private void GameEnd(bool isWin)
     {
+        GameManager.Instance.OnPlayerLoose -= () => GameEnd(false);
+        GameManager.Instance.OnGameEnd -= () => GameEnd(true);
+
         resultText.text = isWin ? "YOU WON" : "YOU LOOSE";
         GetComponent<Animation>().Play();
     }

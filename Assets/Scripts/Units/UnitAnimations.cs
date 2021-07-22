@@ -22,5 +22,7 @@ public class UnitAnimations : MonoBehaviour
 	{
 		animator.SetBool("IsMoving", movement.IsMoving);
 		animator.SetBool("IsShooting", shooter.IsShooting);
+
+		animator.SetBool("Dance", GameManager.Instance.IsGameEnd);
 	}
 }

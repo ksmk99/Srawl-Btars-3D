@@ -17,11 +17,11 @@ public class UnitsCounter : MonoBehaviour
                 units.Remove(unit);
                 if(unit.GetComponent<PlayerMovement>())
                 {
-                    GameManager.Instance.GameLoose();
+                    GameManager.Instance.PlayerDeath();
                 }
                 else if(units.Count == 1)
                 {
-                    GameManager.Instance.GameWin();
+                    GameManager.Instance.GameEnd();
                 }
             };
 

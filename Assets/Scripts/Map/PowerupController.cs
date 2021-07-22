@@ -13,7 +13,8 @@ public class PowerupController : MonoBehaviour
     private void Awake()
     {
         pointsOfInterest = GetComponent<PointsOfInterest>();
-        StartCoroutine(PlacePowerup());
+        GameManager.Instance.OnGameStart += () => StartCoroutine(PlacePowerup());
+        GameManager.Instance.OnGameEnd += () => StopAllCoroutines();
     }
 
     private IEnumerator PlacePowerup()

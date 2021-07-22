@@ -58,8 +58,7 @@ public abstract class Movement : MonoBehaviour
 				canMove = true;
 			}
 		};
-		GameManager.Instance.OnGameLoose += () => canMove = false;
-		GameManager.Instance.OnGameWin += () => canMove = false;
+		GameManager.Instance.OnGameEnd += () => canMove = false;
 		GetComponent<Health>().OnDeath += () => canMove = false;
 	}
 
@@ -70,8 +69,7 @@ public abstract class Movement : MonoBehaviour
 			agent.isStopped = false;
 			canMove = true;
 		};
-		GameManager.Instance.OnGameLoose -= () => canMove = false;
-		GameManager.Instance.OnGameWin -= () => canMove = false;
+		GameManager.Instance.OnGameEnd -= () => canMove = false;
 		GetComponent<Health>().OnDeath -= () => canMove = false;
 	}
 }

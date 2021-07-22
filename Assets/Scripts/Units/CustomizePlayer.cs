@@ -6,13 +6,8 @@ using UnityEngine.UI;
 
 public class CustomizePlayer : MonoBehaviour
 {
-    [SerializeField] private Text text;   
     private void Awake()
     {
-        text.text = PlayerPrefs.GetString("GunName")
-            + " " + PlayerPrefs.GetString("Ability")
-            + " " + PlayerPrefs.GetString("Variant");
-
         SelectAbility(PlayerPrefs.GetString("Ability"), PlayerPrefs.GetString("Variant"));
     }
 
