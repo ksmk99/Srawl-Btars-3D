@@ -21,6 +21,7 @@ public class MultiplyUnit : Unit
 
     protected override void Awake()
     {
+        ReloadTime = 10;
         if (GetComponent<AIMovement>() != null)
         {
             GetComponent<Health>().OnDeath += MakeAction;

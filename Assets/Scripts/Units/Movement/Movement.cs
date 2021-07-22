@@ -52,8 +52,11 @@ public abstract class Movement : MonoBehaviour
     {
 		GameManager.Instance.OnGameStart += () =>
 		{
-			agent.isStopped = false;
-			canMove = true;
+			if (agent.isOnNavMesh)
+			{
+				agent.isStopped = false;
+				canMove = true;
+			}
 		};
 		GameManager.Instance.OnGameLoose += () => canMove = false;
 		GameManager.Instance.OnGameWin += () => canMove = false;

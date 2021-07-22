@@ -5111,6 +5111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathParticle: {fileID: 198247871303120836, guid: e473029e4c70ad543a6879b82a732f4f, type: 3}
+  lifeTime: 7.5
 --- !u!1 &1931211189434318
 GameObject:
   m_ObjectHideFlags: 0
@@ -5153,9 +5154,9 @@ GameObject:
   - component: {fileID: 6343932090839604410}
   - component: {fileID: 4455361268344367025}
   - component: {fileID: 6365132237449719415}
-  - component: {fileID: 5811331362407564319}
   - component: {fileID: 7725173362120716153}
   - component: {fileID: 4765338968518854124}
+  - component: {fileID: 497806221368684018}
   m_Layer: 6
   m_Name: Turret
   m_TagString: Untagged
@@ -5210,29 +5211,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5811331362407564319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474929245964821720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2f6459fb6088764e8715e04963fc87a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnSmoothTime: 0.2
-  visibleRange: 50
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  bulletLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  obstaclesLayer:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!114 &7725173362120716153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5268,6 +5246,28 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &497806221368684018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474929245964821720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c0d50c5e8eb8f34597fa56337f43794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visibleRange: 30
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  bulletLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  obstaclesLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1001 &1241260861301178961
 PrefabInstance:
   m_ObjectHideFlags: 0

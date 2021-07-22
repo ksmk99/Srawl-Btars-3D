@@ -218,6 +218,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3613651072720257560, guid: cca3bf4ea8bbc0a4e8598c913868e4b6, type: 3}
+      propertyPath: label
+      value: 
+      objectReference: {fileID: 1823611123}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cca3bf4ea8bbc0a4e8598c913868e4b6, type: 3}
 --- !u!1 &35524631
@@ -431,7 +435,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353628489}
   m_LocalRotation: {x: 0.13052616, y: -0, z: -0, w: 0.9914449}
-  m_LocalPosition: {x: 2.1, y: 14.6, z: -4.9}
+  m_LocalPosition: {x: 2.1, y: 14.661001, z: -4.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1211356835}
@@ -521,7 +525,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.20784315, g: 0.027450982, b: 0.17254902, a: 0}
+  m_BackGroundColor: {r: 0.42352945, g: 0.41960788, b: 0.41960788, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -627,7 +631,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: cbc89482203fcf94fbca0cf9de6281b4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -750,8 +754,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: cbc89482203fcf94fbca0cf9de6281b4, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -808,7 +812,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100399582}
   m_LocalRotation: {x: 0.13052616, y: -0, z: -0, w: 0.9914449}
-  m_LocalPosition: {x: 2.1, y: 14.6, z: -4.9}
+  m_LocalPosition: {x: 2.1, y: 14.661001, z: -4.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1423655002}
@@ -1269,7 +1273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3438998801903866911, guid: 8bbad977d7522f149ab7d332897da260, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.65
+      value: 12.711
       objectReference: {fileID: 0}
     - target: {fileID: 3438998801903866911, guid: 8bbad977d7522f149ab7d332897da260, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1322,6 +1326,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0c3564ebbd880e44a15316c7e6e6820, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1823611123 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2145126242745190887, guid: cca3bf4ea8bbc0a4e8598c913868e4b6, type: 3}
+  m_PrefabInstance: {fileID: 32454123}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1940479108
@@ -1377,7 +1392,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

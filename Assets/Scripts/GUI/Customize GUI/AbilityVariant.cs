@@ -8,6 +8,8 @@ public class AbilityVariant : MonoBehaviour
 {
     public string Variant { get; private set; }
 
+    [SerializeField] private TMP_Text label;
+
     private TMP_Dropdown dropdown;
 
     public void SetVariants(string value)
@@ -53,9 +55,8 @@ public class AbilityVariant : MonoBehaviour
             dropdown.options.Add(new TMP_Dropdown.OptionData(option));
         }
         dropdown.value = 0;
-        dropdown.enabled = false;
-        dropdown.enabled = true;
         Variant = dropdown.options[0].text;
+        label.text = Variant;
     }
 
     private void Awake()

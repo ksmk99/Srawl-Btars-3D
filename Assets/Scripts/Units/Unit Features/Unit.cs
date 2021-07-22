@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Unit : MonoBehaviour
 {
-    protected float reloadTime = 10f;
+    public float ReloadTime { get; protected set; }
 
     private float nextUseTime;
 
@@ -15,7 +15,7 @@ public abstract class Unit : MonoBehaviour
         if (Time.time - nextUseTime > 0)
         {
             UnitAction();
-            nextUseTime = Time.time + reloadTime;
+            nextUseTime = Time.time + ReloadTime;
         }
     }
 
@@ -23,6 +23,7 @@ public abstract class Unit : MonoBehaviour
 
     protected virtual void Awake()
     {
+        ReloadTime = 10;
         nextUseTime = Time.time;
         if (GetComponent<AIMovement>() != null)
         {

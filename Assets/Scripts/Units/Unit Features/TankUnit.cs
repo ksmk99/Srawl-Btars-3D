@@ -14,13 +14,13 @@ public class TankUnit : Unit
             case "COUNT":
                 {
                     count = 5;
-                    reloadTime = 10;
+                    ReloadTime = 10;
                     break;
                 }
             case "RELOAD":
                 {
                     count = 2;
-                    reloadTime = 5;
+                    ReloadTime = 5;
                     break;
                 }
         }

@@ -2,13 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CustomizePlayer : MonoBehaviour
 {
+    [SerializeField] private Text text;   
     private void Awake()
     {
-        ChooseWeapon(PlayerPrefs.GetString("GunName"));
+        text.text = PlayerPrefs.GetString("GunName")
+            + " " + PlayerPrefs.GetString("Ability")
+            + " " + PlayerPrefs.GetString("Variant");
+
         SelectAbility(PlayerPrefs.GetString("Ability"), PlayerPrefs.GetString("Variant"));
+    }
+
+    private void Start()
+    {
+        ChooseWeapon(PlayerPrefs.GetString("GunName"));
     }
 
     private void ChooseWeapon(string gunName)

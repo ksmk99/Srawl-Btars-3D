@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShieldMen : Unit
 {
-    [SerializeField] private float lifeTime;
+    private float lifeTime = 4f;
     private Shield shieldPrefab;
 
     public override void SetVariant(string variant)
@@ -21,6 +21,7 @@ public class ShieldMen : Unit
     protected override void UnitAction()
     {
         var shield = Instantiate(shieldPrefab, transform);
+        shield.transform.localPosition = shieldPrefab.transform.localPosition;
         shield.Activate();
         Destroy(shield.gameObject, lifeTime);
     }

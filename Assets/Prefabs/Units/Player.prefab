@@ -929,6 +929,7 @@ GameObject:
   - component: {fileID: 1276940048}
   - component: {fileID: 6951591030263013728}
   - component: {fileID: 4291557953866914155}
+  - component: {fileID: 1277082327}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1039,7 +1040,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5edaa74d837464408b851e1c10423fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSmoothTime: 0.2
   visibleRange: 100
   enemyLayer:
     serializedVersion: 2
@@ -1047,6 +1047,9 @@ MonoBehaviour:
   bulletLayer:
     serializedVersion: 2
     m_Bits: 128
+  obstaclesLayer:
+    serializedVersion: 2
+    m_Bits: 256
   shooterJoystick: {fileID: 0}
 --- !u!114 &1276940043
 MonoBehaviour:
@@ -1101,6 +1104,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeathMaterial: {fileID: 2100000, guid: 4913e829ea576014286f50fedcb83387, type: 2}
+--- !u!114 &1277082327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3898397046993065850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f55ef187d1a14445a0a61e2cb619eaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4091424466245019757
 GameObject:
   m_ObjectHideFlags: 0
