@@ -5,14 +5,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CustomizePlayer : MonoBehaviour
-{
-    private void Awake()
-    {
-        SelectAbility(PlayerPrefs.GetString("Ability"), PlayerPrefs.GetString("Variant"));
-    }
+{ 
 
     private void Start()
     {
+        SelectAbility(PlayerPrefs.GetString("Ability"), PlayerPrefs.GetString("Variant"));
         ChooseWeapon(PlayerPrefs.GetString("GunName"));
     }
 

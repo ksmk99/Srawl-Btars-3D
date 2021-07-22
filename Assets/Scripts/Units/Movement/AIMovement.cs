@@ -26,7 +26,7 @@ public class AIMovement : Movement
 
         GetComponent<Health>().OnDamage += () =>
         {
-            if (Random.Range(0, 10) == 0)
+            if (Random.Range(0, 8) == 0)
             {
                 needPowerup = true;
                 agent.stoppingDistance = 0.1f;
